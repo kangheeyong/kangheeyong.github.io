@@ -227,8 +227,6 @@ resConvNet_v4_conditional_dcgans 실험은 resConvNet_v3_conditional_dcgans 실�
 
 
 ---
-* GANs과 DCGANs의 소스코드는 아래 github를 참고 했다.
-[https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
+* [참고한 GANs과 DCGANs의 소스코드](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
 
-* 위의 실험 github
-[https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_2](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_2)
+* [위의 실험 github](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_2)

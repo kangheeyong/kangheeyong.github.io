@@ -3,6 +3,7 @@ title: Noise Canceling Network Project 1
 description:
 categories:
  - project 1
+tags:
 ---
 
 
@@ -59,8 +60,6 @@ test : 0.1\*a -> net -> (a 가 나올것으로 기대)
 
 ---
 
-* GANs과 DCGANs의 소스코드는 아래 github를 참고 했다.
-[https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
+* [참고한 GANs과 DCGANs의 소스코드](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
 
-* 위의 실험 github
-[https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_1](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_1)
+* [위의 실험 github](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_1)

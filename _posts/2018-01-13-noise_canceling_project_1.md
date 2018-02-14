@@ -64,6 +64,4 @@ tags:
 5. 실제 음원으로 학습 후 성능 확인
 
 ---
-* 위의 실험 github
-
-  [https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project)
+  * [위의 실험 github](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project)
