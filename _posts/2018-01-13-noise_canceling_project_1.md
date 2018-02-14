@@ -4,7 +4,6 @@ description:
 categories:
  - project 1
 tags:
-
 ---
 
 
@@ -69,4 +68,5 @@ tags:
 
 ---
 * 위의 실험 github
+
 [https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project)

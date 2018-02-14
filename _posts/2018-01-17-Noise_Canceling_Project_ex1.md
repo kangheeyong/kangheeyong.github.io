@@ -3,8 +3,6 @@ title: Noise Canceling Network Project 1
 description:
 categories:
  - project 1
-tags:
-
 ---
 
 
