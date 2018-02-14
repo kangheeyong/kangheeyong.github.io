@@ -117,7 +117,7 @@ index_with_subtitle: false
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
-  #categories: /categories/
+  categories: /categories/
   #about: /about/
   archives: /archives/
   tags: /tags/
@@ -263,9 +263,9 @@ sidebar:
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
-  display: post
+  #display: post
   #display: always
-  #display: hide
+  display: hide
   #display: remove
 
   # Sidebar offset from top menubar in pixels.
@@ -304,7 +304,7 @@ excerpt_description: true
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
   enable: false
-  length: 150
+  length: 20
 
 # Post meta display settings
 post_meta:
@@ -316,7 +316,7 @@ post_meta:
 # Post wordcount display settings
 post_wordcount:
   item_text: true
-  wordcount: true
+  wordcount: false
   min2read: false
   separated_meta: true
 
@@ -463,7 +463,7 @@ facebook_sdk:
 # If facebook_sdk.enable is false, Facebook comments plugin is unavailable.
 facebook_comments_plugin:
   enable: false
-  num_of_posts: 10  # min posts num is 1
+  num_of_posts: 2  # min posts num is 1
   width: 100%       # default width is 550px
   scheme: light     # default scheme is light (light or dark)
 
@@ -474,7 +474,7 @@ vkontakte_api:
   app_id:       #<app_id>
   like:         true
   comments:     true
-  num_of_posts: 12
+  num_of_posts: 3
 
 # Star rating support to each article.
 # To get your ID visit https://widgetpack.com
