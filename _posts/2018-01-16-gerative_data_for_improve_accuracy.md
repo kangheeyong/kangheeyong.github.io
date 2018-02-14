@@ -68,7 +68,9 @@ cnn_add_generated_data_v6와 cnn_add_generated_data_v7 실험은 각 차원을 �
 ---
 
 * GANs과 DCGANs의 소스코드는 아래 github를 참고 했다.
-[https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
+
+  [https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
 
 * 위의 실험 github
-[https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/generative_data_input_experiment](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/generative_data_input_experiment)
+
+  [https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/generative_data_input_experiment](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/generative_data_input_experiment)
