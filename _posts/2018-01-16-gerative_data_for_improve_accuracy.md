@@ -56,7 +56,7 @@ cnn_add_generated_data_v4와 cnn_add_generated_data_v5 실험은 각 차원을 �
 * 결론 : GANs으로 생성한 generative data를 추가해서 학습을 하면 분류 정확도를 높일 수 있다. 하지만 테스트 정확도가 진동을 할 수는 있는데 그 이유는 GANs으로 생성한 generative data의 경우의 수가 많기 때문에 완전히 학습을 못해서 수렴을 하지 못한 걸로 생각할 수 있다.
 * 의문점들
   * 데이터가 어느 정도 이상적으로 구성되어 있다면, 데이터 수와 정확도 사이에 관계가 있을까? 사실 log스케일과 관계가 있을 거라고 생각을 한다.
-   * 네트워크 이론에서 small world, scale free network 같은 게 나중에 위의 관계가 발견되지 않을까 생각한다.
+  * 네트워크 이론에서 small world, scale free network 같은 게 나중에 위의 관계가 발견되지 않을까 생각한다.
 
 ### GANs으로 생성된 데이터의 경우의 수를 줄인 실험 결과 실험3과 향후 방향 (cnn_add_generated_data_v6,cnn_add_generated_data_v7)
 cnn_add_generated_data_v6와 cnn_add_generated_data_v7 실험은 각 차원을 둘째 자리에서 반올림하고 15개, 20개의 차원만 사용하고 나어지는 0으로 해서 입력으로 사용했다. 따라서 각각의 출력값의 경우의 수는 40<sup>15</sup>(약 10<sup>24</sup>)개와 40<sup>20</sup>(약10<sup>32</sup>)개이다.
@@ -65,10 +65,10 @@ cnn_add_generated_data_v6와 cnn_add_generated_data_v7 실험은 각 차원을 �
 
  위의 결과를 보면 안정적으로 수렴하지 못하는 것을 볼 수 있다. 딥러닝에서 위와 같이 입력 데이터를 변형시켜거 학습하는 방법을 data augmentation이라고 불린다. GANs으로 생성한 데이터를 넣으면 정확도가 향상되는 것을 알았으니 다음 연구는 이와 비슷한 연구를 한 논문을 찾아서 비교해봐야겠다.
 
- * 향후 방향
- * 이 실험은 GANs으로 생성된 데이터를 추가해서 학습하면 성능이 향상되지 않을까? 하는 궁금증을 해결하기 위해서 한 실험이었다. 여기서는 단순히 Conditional GANs을 이용해서 데이터를 생성했지만 2017년에 나와 같은 생각을 한 사람이 논문([Data Argmentation Generative Adversarial Networks(DAGANs)](https://arxiv.org/abs/1711.04340))을 발표했다. 다음 실험은 이 논문에 대한 간단한 리뷰와 위와 같은 환경에서 Conditional GANs과 성능을 비교할 계획이다.
+### 향후 방향
+이 실험은 GANs으로 생성된 데이터를 추가해서 학습하면 성능이 향상되지 않을까? 하는 궁금증을 해결하기 위해서 한 실험이었다. 여기서는 단순히 Conditional GANs을 이용해서 데이터를 생성했지만 2017년에 나와 같은 생각을 한 사람이 논문([Data Argmentation Generative Adversarial Networks(DAGANs)](https://arxiv.org/abs/1711.04340))을 발표했다. 다음 실험은 이 논문에 대한 간단한 리뷰와 위와 같은 환경에서 Conditional GANs과 성능을 비교할 계획이다.
+
 ---
 
 * [참고한 GANs과 DCGANs의 소스코드](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
-
 * [위의 실험 github](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/generative_data_input_experiment)
