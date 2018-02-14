@@ -1,5 +1,5 @@
 ---
-title: Noise Canceling Network Project 실험1
+title: Noise Canceling Network Project 1
 description:
 categories:
  - project 1
@@ -55,8 +55,14 @@ test : 0.1\*a -> net -> (a 가 나올것으로 기대)
 
 위의 표는 가장 왼쪽이 입력데이터에 쓸 이미지이고 가운데는 입력데이터에서 노이즈를 투가한 다음 네트워크 입력으로 했다. 오른쪽은 결과 값이다. 입력이미지의 스케일은 원본의 0.3, 0.4, 0.5, 0.6, 0.7, 0.8로 했고 출력값은 원본의 0.9배로 했다. 자세한 실험 방법은 코드를 보연 알 수 있다. 위의 결과를 보면 어느정도 스케일이 달라도 출력값의 스케일은 일정하게 만들수는 있는걸로 보인다.
 
-* 결론
-    적어도 Convolutional Net에서는 처음에 가정한데로 학습한 데이터에 한에서는 좋게 나오지만 그 이외의 것은 기대하지 않는다고 생각하면 될것 같다. 결국 실제 환경에 쓰일 네트워크를 설계하려면 실제 환경에 맞춰서 학습데이터를 전처리 하는것이 최선일 것이라는 결론을 내렸다. 비록 여기서 사용한 MNIST 데이터의 실험만으로 단정짓는것은 성급할 수가 있으나, 여기서 결정을 안하면 이 실험은 영원히 끝이 안날것 같다. 다음 실험은 MNIST 데이터를 가지고 여러가지 네트워크 구조를 적용해봐야 겠다.
+### 결론
 
+적어도 Convolutional Net에서는 처음에 가정한데로 학습한 데이터에 한에서는 좋게 나오지만 그 이외의 것은 기대하지 않는다고 생각하면 될것 같다. 결국 실제 환경에 쓰일 네트워크를 설계하려면 실제 환경에 맞춰서 학습데이터를 전처리 하는것이 최선일 것이라는 결론을 내렸다. 비록 여기서 사용한 MNIST 데이터의 실험만으로 단정짓는것은 성급할 수가 있으나, 여기서 결정을 안하면 이 실험은 영원히 끝이 안날것 같다. 다음 실험은 MNIST 데이터를 가지고 여러가지 네트워크 구조를 적용해봐야 겠다.
 
+---
+
+* GANs과 DCGANs의 소스코드는 아래 github를 참고 했다.
+[https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
+
+* 위의 실험 github
 [https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_1](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_1)

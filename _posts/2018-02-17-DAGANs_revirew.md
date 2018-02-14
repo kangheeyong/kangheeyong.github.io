@@ -3,6 +3,7 @@ title: Data Augmentation Generative Adversarial Networks(DAGANs) review
 description:
 categories:
  - project 2
+ - paper
 tags:
  - GANs
  - Data Augmentation

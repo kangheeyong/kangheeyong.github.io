@@ -1,5 +1,5 @@
 ---
-title: Noise Canceling Network Project 실험2
+title: Noise Canceling Network Project 2
 description:
 categories:
  - project 1
@@ -222,4 +222,9 @@ resConvNet_v4_conditional_dcgans 실험은 resConvNet_v3_conditional_dcgans 실�
 2. 생성 모델로써의 GANs으로 쓴게 아니라 위와 같이 기존 모델에서 정확도를 높이기 위해서 GANs을 쓰는 것은 위의 실험에서 어느하나 기존보다 좋은 결봐를 보여주지 못했다. 따라서 앞으로 하는 프로젝트에서는 GANs을 사용하지 말고 기존의 방식으로 학습을 해야겠다. GANs을 사용하지 않아서 생기는 장점은 Discriminator net에 사용되는 parameter가 없기 때문에 더 깊은 네트워크를 사용할 수 있을것이다.(그래픽카드 메모리가 한정됬기 때문이다.)   
 
 
+---
+* GANs과 DCGANs의 소스코드는 아래 github를 참고 했다.
+[https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
+
+* 위의 실험 github
 [https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_2](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/Noise_Canceling_Net_project/experiment_2)

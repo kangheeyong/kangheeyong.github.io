@@ -30,7 +30,7 @@ GANs으로 생성된 데이터는 일반적으로 학습에 사용된 데이터�
 
 위 결과를 보면 normal ConvNN을 경우 특정값으로 수렴하는 것으로 보이지만 GANs으로 생성된 데이터와 같이 사용한 경우 정확도의 최대값은 높아 지지만 매우 불안정한 것을 볼 수 있다.
 * 실험 결과 분석 : GANs으로 생성된 데이터를 이용할 경우 최대 정확도는 올라가지만 진동이 심하여 정확도가 불안정 하다.
-* 불안정한 원인 분석 : 두 네트워크의 차이점은 input data의 수라고 생각한다. normal ConvNN의 경우 input data가 60K개 이다. 하지만 GANs르 생성된 데이터는 100차원 데이터가 각각 평균 0과 분산 1로 이루어진 정규분포를 따르는 값을 입력 데이터로 한다. 따라서 생성될 수 있는 데이터의 조합은 한 차원당 약 10K의 경우의 수가 생긴다고 한다면 나올 수 있는 조합은 약 10K^100^개이다. 즉, GANs으로 생성된 데이터를 추가해서 학습하는 경우 input data의 수는 약 60K + 10K^100^(약 10^400^)개이다.
+* 불안정한 원인 분석 : 두 네트워크의 차이점은 input data의 수라고 생각한다. normal ConvNN의 경우 input data가 60K개 이다. 하지만 GANs르 생성된 데이터는 100차원 데이터가 각각 평균 0과 분산 1로 이루어진 정규분포를 따르는 값을 입력 데이터로 한다. 따라서 생성될 수 있는 데이터의 조합은 한 차원당 약 10K의 경우의 수가 생긴다고 한다면 나올 수 있는 조합은 약 10K<sup>100</sup>개이다. 즉, GANs으로 생성된 데이터를 추가해서 학습하는 경우 input data의 수는 약 60K + 10K<sup>100</sup>(약 10<sup>400</sup>)개이다.
 * 결론 : GANs으로 생성된 데이터의 경우의 수를 줄인다. 줄이는 방법은 각 차원의 값을 반올림 하여 사용하면 경우의 수를 줄일 수 있을 거라고 생각한다.
 
 
@@ -40,11 +40,11 @@ cnn_add_generated_data_v2 프로그램에서 돌린 실험은 소수 둘째 자�
  ![normal cnn adding ganerative data v2](/assets/2018-01-16/normal_cnn_add_generated_datav2_result.jpg)
  ![normal cnn adding ganerative data v3](/assets/2018-01-16/normal_cnn_add_generated_datav3_result.jpg)
 
-위의 결과를 분석해보면 각 차원당 N(0,1)을 따르는 정규분포를 따르고 둘째 자리와 셋째 자리를 반올림 했다면 한차원 당 값의 범위는 각각 약 -2.0 ~ 2.0와 -2.00 ~ 2.00으로 생각할 수 있다. 즉, 각 차원 당 값의 경우의 수는 각각 40개와 400개이다. 다시 전체 경우의 수로 바꿔보면 40^100^은 약 10^160^이 되고, 400^100^은 약 10^260^이 된다. 여전히 큰 숫자 였다. 하지만 1번 실험에서의 문제의 원인을 데이터의 수가 많기 때문에, 수렴을 안한다고 했었지만 이 실험을 통해서는 확인할 수가 없다. 왜냐하면 데이터가 많아서 수렴을 안한다는 말은 다르게 생각해보면 어느정도 데이터만 있으면 수렴을 한다고 생각할 수 있기 때문이다. 다음 실험은 입력데이터의 차원수를 줄여서 출력값의 경우의 줄여서 실험을 해봐야 겠다.
+위의 결과를 분석해보면 각 차원당 N(0,1)을 따르는 정규분포를 따르고 둘째 자리와 셋째 자리를 반올림 했다면 한차원 당 값의 범위는 각각 약 -2.0 ~ 2.0와 -2.00 ~ 2.00으로 생각할 수 있다. 즉, 각 차원 당 값의 경우의 수는 각각 40개와 400개이다. 다시 전체 경우의 수로 바꿔보면 40<sup>100</sup>은 약 10<sup>160</sup>이 되고, 400<sup>100</sup>은 약 10<sup>260</sup>이 된다. 여전히 큰 숫자 였다. 하지만 1번 실험에서의 문제의 원인을 데이터의 수가 많기 때문에, 수렴을 안한다고 했었지만 이 실험을 통해서는 확인할 수가 없다. 왜냐하면 데이터가 많아서 수렴을 안한다는 말은 다르게 생각해보면 어느정도 데이터만 있으면 수렴을 한다고 생각할 수 있기 때문이다. 다음 실험은 입력데이터의 차원수를 줄여서 출력값의 경우의 줄여서 실험을 해봐야 겠다.
 
 
 ### GANs으로 생성된 데이터의 경우의 수를 줄인 실험 결과 실험2 (cnn_add_generated_data_v4,cnn_add_generated_data_v5)
-cnn_add_generated_data_v4와 cnn_add_generated_data_v5 실험은 각 차원을 둘째 자리에서 반올림 하고 5개,10개의 차원만 사용하고 나어지는 0으로 해서 입력으로 사용 했다. 따라서 각각의 출력값의 경우의 수는 40^5^(약 10^8^)개와 40^10^(약10^16^)개이다.
+cnn_add_generated_data_v4와 cnn_add_generated_data_v5 실험은 각 차원을 둘째 자리에서 반올림 하고 5개,10개의 차원만 사용하고 나어지는 0으로 해서 입력으로 사용 했다. 따라서 각각의 출력값의 경우의 수는 40<sup>5</sup>(약 10<sup>8</sup>)개와 40<sup>10</sup>(약10<sup>16</sup>)개이다.
 
  ![normal cnn adding ganerative data v4_5](/assets/2018-01-16/normal_cnn_add_generated_datav4_5_result.jpg)
 
@@ -56,7 +56,7 @@ cnn_add_generated_data_v4와 cnn_add_generated_data_v5 실험은 각 차원을 �
 
 
 ### GANs으로 생성된 데이터의 경우의 수를 줄인 실험 결과 실험3과 향후 방향 (cnn_add_generated_data_v6,cnn_add_generated_data_v7)
-cnn_add_generated_data_v6와 cnn_add_generated_data_v7 실험은 각 차원을 둘째 자리에서 반올림 하고 15개,20개의 차원만 사용하고 나어지는 0으로 해서 입력으로 사용 했다. 따라서 각각의 출력값의 경우의 수는 40^15^(약 10^24^)개와 40^20^(약10^32^)개이다.
+cnn_add_generated_data_v6와 cnn_add_generated_data_v7 실험은 각 차원을 둘째 자리에서 반올림 하고 15개,20개의 차원만 사용하고 나어지는 0으로 해서 입력으로 사용 했다. 따라서 각각의 출력값의 경우의 수는 40<sup>15</sup>(약 10<sup>24</sup>)개와 40<sup>20</sup>(약10<sup>32</sup>)개이다.
 
  ![normal cnn adding ganerative data v4_5](/assets/2018-01-16/normal_cnn_add_generated_datav6_7_result.jpg)
 
@@ -65,4 +65,10 @@ cnn_add_generated_data_v6와 cnn_add_generated_data_v7 실험은 각 차원을 �
 * 향후 방향
     * 이 실험은 GANs으로 생성된 데이터를 추가 해서 학습하면 성능이 향상되지 않을까? 하는 굼금증을 해결하기 위해서 한 실험이였다. 여기서는 단순히 Conditional GANs을 이용해서 데이터를 생성 했지만 2017년에 나와 같은 생각을 한사람이 논문([Data Argmentation Generative Adversarial Networks(DAGANs)](https://arxiv.org/abs/1711.04340))을 발표 했다. 다음 실험은 이 논문에 대한 간단한 리뷰와 위와 같은 환경에서 Conditional GANs과 성능을 비교할 계획이다.
 
-github : [https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/generative_data_input_experiment](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/generative_data_input_experiment)
+---
+
+* GANs과 DCGANs의 소스코드는 아래 github를 참고 했다.
+[https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN](https://github.com/znxlwm/tensorflow-MNIST-GAN-DCGAN)
+
+* 위의 실험 github
+[https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/generative_data_input_experiment](https://github.com/kangheeyong/2018-1-Deep-Learing-pc1/tree/master/generative_data_input_experiment)
