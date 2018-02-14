@@ -1,6 +1,6 @@
 ---
-layout: index
+layout: page
 ---
 
 
-sdfsdfd
+학습의 효율을 높이기 위해 이해한 것을 글로 남긴것!!
