@@ -1,5 +1,5 @@
 ---
-title: Data Augmentation Generative Adversarial Networks(DAGANs) review
+title: Data Augmentation Generative Adversarial Networks(DAGANs) review(미완)
 description:
 categories:
  - project 2

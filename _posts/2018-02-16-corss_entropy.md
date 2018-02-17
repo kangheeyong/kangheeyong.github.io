@@ -42,6 +42,7 @@ $$H(x) = - E_{x \sim p_{X}(x)}[log(p_{X}(x))]$$
 위의 식은 모두 똑같은 entropy식이다.(continuous 경우만 고려 했다.) 자세한 설명은 아래 블로그를 참조하면 좋다.
 
  [https://ratsgo.github.io/statistics/2017/09/22/information/](https://ratsgo.github.io/statistics/2017/09/22/information/)
+
 [http://sanghyukchun.github.io/62/](http://sanghyukchun.github.io/62/)
 
 PDF함수를 간단하게 표현하면 그냥 $$p(x)$$로 쓸 수도 있고, 만약 PDF함수가 여러게면 $$p_X(x)$$ or $$p_Y(y)$$게 표현 할 수 있다. 하지만 꼭  $$p_X(x)$$에서 $$X$$(대문자)를 사용했다고 변수를 반듯이 $$x$$(소문자)로 사용할 필요가 없다. 개인적으로는 이래서 논문을 이해할 때 많이 헷갈린다. [Generative Adversarial Networks(2014)](http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf)논문에서 나온 예를 보이면,
@@ -112,7 +113,7 @@ $$average = \underset{x=1}{\overset{4}\sum}p(x)q(x)$$
 
 여기서 $$p(x)$$는 우리가 생각하는 [Probability Density Function(PDF)](https://en.wikipedia.org/wiki/Probability_density_function)이다. 위의 수식의 의미를 해석해 보면 $$p(x)$$는 $$q(x)$$라는 특정 값의 확률이라고 생각하면 된다. 물론 이렇게 해석할 수 있는 것은 discrete 버전이기 때문이고 continue 버전에서는 어떤 특정 값의 확률은 무조건 0이기 때문에 범위 개념으로 잡아서 확률을 계산한다. 어쨌든 discrete이든 continue이든 개념은 거의 같기 때문에 위와 같이 이해하면 될 것 같다.
 
-    사실 PDF의 개념을 하나의 문장으로 설명하는 것은 진짜로 이해하는 데 아무런 도움이 안되는 것 같다. 왜냐하면 하나의 문장으로 PDF의 개념을 내 능력으로는 못 담겠다. 그래서 위와 같이 나름데로 스토리로 만들어서 이해하고 있다.
+    사실 PDF의 개념을 하나의 문장으로 설명하는 것은 진짜로 이해하는 데 아무런 도움이 안되는 것 같다. 왜냐하면 하나의 문장으로 PDF의 개념을 내 능력으로는 못 쓰겠다. 그래서 위와 같이 나름데로 스토리로 만들어서 이해하고 있다.
 
 위의 식을 continue 버전으로 바꾸면
 
@@ -156,13 +157,13 @@ $$E_{X, Y}[q(x,y)] = \int_{X} \int_{Y} p_{X, Y}(x,y)q(x,y)dydx$$
 위의 식은 하나의 변수로 이루어진 평균식과 비교하면 개념을 쉽게 확장할 수 있다. 이제 위의 식을 가지고 Conditional entropy를 정의하면 아래와 같다.
 
 
-$$H(x\mid y) = E_{X, Y}[p_X(x \mid y)]$$
+$$H(x\mid y) = E_{X, Y}[log(p_X(x \mid y))]$$
 
 $$p_X(x \mid y) = {p_{X,Y}(x,y)\over p_Y(y)},  \text{beyes' rule}$$
 
-여기서 $$q(x,y) = p_X(x \mid y)$$로 치환에서 대입을 하면
+여기서 $$q(x,y) = log(p_X(x \mid y))$$로 치환에서 대입을 하면
 
-$$E_{X, Y}[p_X(x \mid y)] = \int_{X} \int_{Y} p_{X, Y}(x,y)p_X(x\mid y)dydx$$
+$$E_{X, Y}[p_X(x \mid y)] = \int_{X} \int_{Y} p_{X, Y}(x,y)log(p_X(x\mid y))dydx$$
 
     치환해서 대입하는 것은 맞았지만 치환해야 하는 대상이 틀렸었다. Conditional entropy를 정의 하기 위해서는 entropy식에서 바로 확장하는게 아니라 entropy의 근본적인 개념 즉, 평균을 구하는 식을 가지고 Conditional entropy를 정의 했었어야 했다. 좀 더 확장해서 생각해보면 기초가 튼튼하지 않으면 새로운 알고리즘을 만드는 건 어려운게 아닐까 생각한다.  
 
