@@ -157,13 +157,13 @@ $$E_{X, Y}[q(x,y)] = \int_{X} \int_{Y} p_{X, Y}(x,y)q(x,y)dydx$$
 위의 식은 하나의 변수로 이루어진 평균식과 비교하면 개념을 쉽게 확장할 수 있다. 이제 위의 식을 가지고 Conditional entropy를 정의하면 아래와 같다.
 
 
-$$H(x\mid y) = E_{X, Y}[log(p_X(x \mid y))]$$
+$$H(x\mid y) = E_{X, Y}[-log(p_X(x \mid y))]$$
 
 $$p_X(x \mid y) = {p_{X,Y}(x,y)\over p_Y(y)},  \text{beyes' rule}$$
 
-여기서 $$q(x,y) = log(p_X(x \mid y))$$로 치환에서 대입을 하면
+여기서 $$q(x,y) = -log(p_X(x \mid y))$$로 치환에서 대입을 하면
 
-$$E_{X, Y}[log(p_X(x \mid y))] = \int_{X} \int_{Y} p_{X, Y}(x,y)log(p_X(x\mid y))dydx$$
+$$E_{X, Y}[-log(p_X(x \mid y))] = -\int_{X} \int_{Y} p_{X, Y}(x,y)log(p_X(x\mid y))dydx$$
 
     치환해서 대입하는 것은 맞았지만 치환해야 하는 대상이 틀렸었다. Conditional entropy를 정의 하기 위해서는 entropy식에서 바로 확장하는게 아니라 entropy의 근본적인 개념 즉, 평균을 구하는 식을 가지고 Conditional entropy를 정의 했었어야 했다. 좀 더 확장해서 생각해보면 기초가 튼튼하지 않으면 새로운 알고리즘을 만드는 건 어려운게 아닐까 생각한다.  
 
