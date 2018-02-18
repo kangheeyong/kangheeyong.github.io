@@ -168,10 +168,84 @@ $$E_{X, Y}[-log(p_X(x \mid y))] = -\int_{X} \int_{Y} p_{X, Y}(x,y)log(p_X(x\mid 
     치환해서 대입하는 것은 맞았지만 치환해야 하는 대상이 틀렸었다. Conditional entropy를 정의 하기 위해서는 entropy식에서 바로 확장하는게 아니라 entropy의 근본적인 개념 즉, 평균을 구하는 식을 가지고 Conditional entropy를 정의 했었어야 했다. 좀 더 확장해서 생각해보면 기초가 튼튼하지 않으면 새로운 알고리즘을 만드는 건 어려운게 아닐까 생각한다.  
 
 
+
+
+
 #### KL divergence
+
+$$KL(p\| q) = D_{KL}(p\| q) = -\int p(x)log({q(x)\over p(x)})dx$$
+
+위의 식은 인터넷에서 검색만 하면 아는 KL divergence 식이다. 보통 이 식은 두 확률 분포의 차이를 구할 때 쓴다고 한다. 그럼 이제 위의 식을 분해해서 왜 두 확률분포함수의 차이를 구하는지 이해해보자.
+
+$$-\int p(x)log({q(x)\over p(x)})dx = -\int p(x)log(q(x))dx - (-\int p(x)log(p(x))dx)$$
+
+log의 성질을 이용하면 위과 같이 바뀐다. 위 식을 평균의 식에 대입해보면
+
+$$-\int p(x)log({q(x)\over p(x)})dx = E_{x \sim \color{blue}{p(x)}}[-log( \color{red}{q(x) })] - E_{x \sim \color{blue}{p(x)}}[-log(\color{blue}{p(x)})]$$
+
+위의 식을 보면 이상한 점이 있다.(이상하기 생각하는 부분을 blue와 red로 표현 했다.) 이 식은 보통 두 확률분포의 차이를 구할 때 사용한다고 하지만 위의 식을 통해서 분석해 보면 하나의 확률분포에서 나오는 서로 다른 두 가지 값의 차이를 계산하는 것 처럼 보인다. 내가 생각했던 두 확률 분포의 차이는 다음과 같았다.
+
+$$E_{x \sim \color{red}{q(x)}}[-log(\color{red}{q(x)})] - E_{x \sim \color{blue}{p(x)}}[-log(\color{blue}{p(x)})]$$
+
+사실 내가 생각한 식을 보면 단순히 평균값의 차이이다. 평균값이 서로 같다고 해서 두 값은 서로 같다고 말하기는 좀 부정확하다. 간단하게 예를 든다고 해도 가우시안 분포를 따르는 확률분포함수도 평균이 같아도 분산이 다르면 서로 다르다고 말해야 하는게 아닌가? 하지만 위의 식으로는 평균은 같기 때문에 같다고 생각하는 오류가 발생한다. 사실 이건 평균값의 한계인 것 같다. 왜 위와 같이 정의됬는지 이해하기 위해서는 왜 만들어졌는지 알아야 하는 것 같다.
+
+
+
+>In information theory, the Kraft–McMillan theorem establishes that any directly decodable coding scheme for coding a message to identify one value $$x_i$$ out of a set of possibilities $$X$$ can be seen as representing an implicit probability distribution $$q(x_i)=2^{-l_i}$$ over $$X$$, where $$l_i$$ is the length of the code for $$x_i$$ in bits. Therefore, the Kullback–Leibler divergence can be interpreted as the expected extra message-length per datum that must be communicated if a code that is optimal for a given (wrong) distribution $$Q$$ is used, compared to using a code based on the true distribution $$P$$
+
+위의 글은 [위키피디아 motivation](https://en.wikipedia.org/wiki/Kullback–Leibler_divergence) 부분이다. 이 부분을 읽어보면 $$q(x_i)=2^{-l_i}$$이 부분을 wrong distribution $$Q$$로 정의 했다. 이 부분이 왜 확률분포함수로 바뀌는지 모르겠다. 그래서 나름 관련된 자료를 읽고 왜 이렇게 됬는지 예상을 해보았다.
+
+관련 자료 : [Entropy encoding](https://prateekvjoshi.com/2014/12/06/what-is-entropy-coding/), [허프만 알고리즘](http://wooyaggo.tistory.com/95). [Kraft–McMillan inequality](https://en.wikipedia.org/wiki/Kraft–McMillan_inequality)
+
+엔트로피는 과거 효율적으로 데이터를 전송하기 위해서 만들어진 걸로 알고 있다. 현재(2018년)에는 모르겠지만 과거 하드웨어 기술이 지금만큼 발전하지 못해서 어떤 정보(암호나 문장 같은 것)를 전송하기 위해서는 최소한의 데이터 길이로 보내야 했다. 하지만 사람들이 쓰는 정보는 보통 문장이였는 데 그 문장 내용에 따라 알파벳이 달랐고, 그 각각의 알파벳의 빈도 수가 달랐다. 위의 관련자료를 다 읽어보면 알겠지만, 각각의 알파벳을 일정한 크기의 bit(디지털 신호는 0과 1의 조합이기 때문에)로 정의 하는게 아니라 빈도 수가 많은 것을 짧은 bit(정보량이 작음)로 빈도 수가 적은 것은 긴 bit(정보량이 큼)로 표현해서 데이터를 보내면 모든 알파벳을 같은 bit의 크기로 정의하는 것보다 평균적으로 더 짧은 bit의 크기로 정보를 전송할 수 있다. 이것을 수학적으로 표현하면 [정보 엔트로피](https://ko.wikipedia.org/wiki/정보_엔트로피)이다.
+
+$$H(x) = E_{x \sim p_{X}(x)}[-log(p_{X}(x))]$$
+
+하지만 위의 식에 문제가 있는데 위에서 정의한 정보량 $$-log(p_{X}(x))$$의 값을 어떻게 정의 하느냐이다. 그 정의하는 방법 중 하나는 아마도 [Entropy encoding](https://prateekvjoshi.com/2014/12/06/what-is-entropy-coding/)과 관련 있고, 실제 정보량을 정의하기 위해서는 반듯이 정수로 나와야 한다.
+
+그래서 나온 수식이 $$q(x_i)=2^{-l_i}$$이고 이것은 아마도 [허프만 알고리즘](http://wooyaggo.tistory.com/95)으로 정의한 것의 정보량을 표현하는 식의 결과일 것이다. 운이 좋게도 위의 식의 합은 [Kraft–McMillan inequality](https://en.wikipedia.org/wiki/Kraft–McMillan_inequality)식에 의해서 최댓값은 1이다. 이것은 확률분포함수로 정의하기에 충분한 조건이다.
+
+알고리즘([허프만 알고리즘](http://wooyaggo.tistory.com/95)과 같은)을 개발하면 성능의 효율성을 보이기 위해서 적절한 measure 방법이 필요하고, 그것이 $$KL(p\|q)$$게 아닐까 생각한다.
+
+즉, $$KL(p\|q)$$는 사람들이 정의한 정보량($$-log(\color{red}{q(x)})$$)을 가지고 실제 확률분포($$\color{blue}{p(x)}$$)를 이용한 평균값이  실제 확률분포($$\color{blue}{p(x)}$$)로 정의한 엔트로피의 차이를 구한 measure 식이다.
+
+$$KL(p\|q) = E_{x \sim \color{blue}{p(x)}}[-log( \color{red}{q(x) })] - E_{x \sim \color{blue}{p(x)}}[-log(\color{blue}{p(x)})] \ge 0$$
+
+$$E_{x \sim \color{blue}{p(x)}}[-log( \color{red}{q(x) })]  \ge 0$$
+
+$$ E_{x \sim \color{blue}{p(x)}}[-log(\color{blue}{p(x)})] \ge 0$$
+
+처음에는 단순히 정보를 효율적으로 보내는 알고리즘을 성능을 측정하기 위해 사용됬을 거라고 생각하나, 나중에 두 확률분포가 얼마나 다른지도 사용할 수 있는 수학적 근거가 명확해 져서 현재 $$KL(p\|q)$$는 두 확룰분포함수를 비교할 때 쓴다고 말하는게 아닐까 생각한다.
+
+
 
 #### cross entropy
 
+$$KL(p\|q) = E_{x \sim \color{blue}{p(x)}}[-log( \color{red}{q(x) })] - E_{x \sim \color{blue}{p(x)}}[-log(\color{blue}{p(x)})]$$
+
+cross-entropy식의 경우 $$KL(p\|q)$$식에서 $$E_{x \sim \color{blue}{p(x)}}[-log( \color{red}{q(x) })]$$ 부분만 가져온 식이다. 이 식은 딥러닝에서 loss함수로 많이 사용된다. 딥러닝에서 많이 쓰는 이유는 [sigmoid 함수](https://en.wikipedia.org/wiki/Sigmoid_function)와 같이 썼을 경우 [Mean Square Error](https://en.wikipedia.org/wiki/Mean_squared_error)에 생기는 gradient vanishing 문제를 일부분 해결할 수 있기 때문이다.
+
+    딥러닝에서 실제 쓰는 loss 함는 엄밀하게 말하면 KL divergence가 아닐까 생각한다. 하지만 미분을 하면 cross entropy 식만 남기 때문에 실질적으로 의미가 없는 부분을 제거하고 사용한게 아닐까 생각한다. 그래서 처음 딥러닝 공부를 할 때, cross entropy 식이 뜬금?없이 나와서 이상했었는 데 알고보니 두 확률값의 차이를 구하기 위해 정의한 식의 생략 버진이라고 생각하니 뭔가 받아들이기 쉬워졌다.
+
+
+
 #### Mutual information
+
+$$I(x,y) = KL(p_{X,Y}(x,y)\| p_X(x)p_Y(y))$$
+
+이 수식은 두 확률분포가 독립(independent)인지 종속(dependent)인지에 관한 식이다. 만약 어떤 두 확률 분포가 독립이라면 아래의 식이 만족한다.
+
+$$p_{X,Y}(x,y) = p_X(x)p_Y(y)$$
+
+사실 이 수식을 분석하기 전에 독립이 뭔지 알아야 한다. 보통 독립을 설명하기 위해서는 동전 던지기를 예시로 든다. 각각의 사건이 서로의 확률에 영향을 끼치지 못한다는 것은 이해하기 쉽지만 위의 식은 뭔가 받아들이기 어려웠다. 그 이유는 아마도 어떤 상황을 보고 수식으로 바꾸는 연습이 부족했기 때문에 뭔가 받아들이기 어려웠던 것이다.
+
+
+
+$$P(x \cap y) = P(x)P(y)$$
+
+여기서  
+
+
+
 
 ### 결론
