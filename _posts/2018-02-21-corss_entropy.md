@@ -1,5 +1,5 @@
 ---
-title: 딥러닝 논문을 읽을 때 알면 좋은 것들?(Entropy와 관련된 기호)(미완)
+title: 딥러닝 논문을 읽을 때 알면 좋은 것들?(Entropy와 관련된 기호)
 description:
 categories:
  - study
